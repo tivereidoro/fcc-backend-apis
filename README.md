@@ -1,11 +1,8 @@
-# freeCodeCamp — Back End Development and APIs
+# freeCodeCamp — Backend Development and APIs Course
 
-Solutions to the six certification labs of the
-[Back End Development and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis-v9/)
+Certification labs of the
+[FreeCodeCamp Backend Development and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis-v9/)
 certification.
-
-Each folder is a self-contained project. Install its dependencies with `npm i`
-from inside the folder, then start it with `npm start`.
 
 | Lab | Focus | Port |
 | --- | --- | --- |
