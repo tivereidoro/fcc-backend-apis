@@ -1,0 +1,58 @@
+Build a Family Movie Watchlist API
+Install your project dependencies by entering npm i from the build-a-family-movie-watchlist-api/ folder in the terminal.
+
+Seeded data in ./data/ has been provided, and does not need to be manually edited.
+
+Functions in ./utils/db.js have been provided for working with the watchlist. No more need to be created.
+
+Objective: Fulfill the user stories below and get all the tests to pass to complete the lab.
+
+User Stories
+
+./middleware/authenticate.js should export a named function authenticate.
+
+authenticate should respond 401 { "error": "No token provided." } if there is no authorization bearer token in the headers.
+
+authenticate should respond 401 { "error": "Invalid or expired token." } if the token is not successfully verified.
+
+authenticate should attach the decoded token to req.user.
+
+./middleware/authorize.js should export a named function authorizeModification.
+
+authorizeModification should respond 403 { "error": "Access denied" } if req.user.role is not "parent", or if req.user.role is not "child" and req.params.userId is not the same as req.user.id.
+
+When a POST request is made to /api/auth/login without a username or password field in the request body, the server should return a 400 status.
+
+When a POST request is made to /api/auth/login with a username that does not exist, the server should return a 401 status.
+
+When a POST request is made to /api/auth/login with a correct username but wrong password, the server should return a 401 status.
+
+When a POST request is made to /api/auth/login with valid credentials, the server should return a 200 status with a JSON body containing a token field.
+
+When a request is made to any watchlist route without an Authorization header, the server should return a 401 status.
+
+When a request is made to any watchlist route with a malformed or expired token, the server should return a 401 status.
+
+When an authenticated user makes a GET request to /api/watchlist/:userId, the server should return a 200 status with the watchlist for that user regardless of the requester's role.
+
+When an authenticated user with the parent role makes a POST request to /api/watchlist/:userId/movies, the server should return a 201 status and add the movie to that user's watchlist.
+
+When an authenticated user with the child role makes a POST request to /api/watchlist/:userId/movies where :userId belongs to another user, the server should return a 403 status.
+
+When an authenticated user with the child role makes a POST request to /api/watchlist/:userId/movies where :userId is their own, the server should return a 201 status and add the movie to their watchlist.
+
+When an authenticated user with the parent role makes a PUT request to /api/watchlist/:userId/movies/:movieId, the server should return a 200 status and update the movie on that user's watchlist.
+
+When an authenticated user with the child role makes a PUT request to /api/watchlist/:userId/movies/:movieId where :userId belongs to another user, the server should return a 403 status.
+
+When an authenticated user with the child role makes a PUT request to /api/watchlist/:userId/movies/:movieId where :userId is their own, the server should return a 200 status and update the movie.
+
+When an authenticated user with the parent role makes a DELETE request to /api/watchlist/:userId/movies/:movieId, the server should return a 200 status and remove the movie from that user's watchlist.
+
+When an authenticated user with the child role makes a DELETE request to /api/watchlist/:userId/movies/:movieId where :userId belongs to another user, the server should return a 403 status.
+
+When an authenticated user with the child role makes a DELETE request to /api/watchlist/:userId/movies/:movieId where :userId is their own, the server should return a 200 status and remove the movie.
+
+Run Tests
+Tests
+Console
